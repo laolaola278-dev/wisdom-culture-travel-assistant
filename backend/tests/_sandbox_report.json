@@ -1,0 +1,387 @@
+{
+  "summary": {
+    "total": 75,
+    "passed": 75,
+    "failed": 0,
+    "elapsed_seconds": 10.2,
+    "timestamp": "2026-06-23 08:30:53",
+    "all_passed": true
+  },
+  "results": [
+    {
+      "name": "健康检查 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "返回 status=ok",
+      "ok": true,
+      "detail": "实际: ok"
+    },
+    {
+      "name": "包含知识图谱统计",
+      "ok": true,
+      "detail": "实体数: 2469"
+    },
+    {
+      "name": "包含向量库统计",
+      "ok": true,
+      "detail": "段数: None"
+    },
+    {
+      "name": "包含 llm_enabled 字段",
+      "ok": true,
+      "detail": "值: False"
+    },
+    {
+      "name": "包含 llm_provider 字段",
+      "ok": true,
+      "detail": "值: deepseek"
+    },
+    {
+      "name": "包含 database 状态",
+      "ok": true,
+      "detail": "值: ok"
+    },
+    {
+      "name": "包含 agents 配置",
+      "ok": true,
+      "detail": "值: {'enabled': True}"
+    },
+    {
+      "name": "问答 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "返回 answer 字段",
+      "ok": true,
+      "detail": "长度: 926"
+    },
+    {
+      "name": "返回 question 字段",
+      "ok": true,
+      "detail": "值: 白云山有哪些景点"
+    },
+    {
+      "name": "返回 source 字段",
+      "ok": true,
+      "detail": "值: hybrid_rag_v2"
+    },
+    {
+      "name": "返回 related_entities",
+      "ok": true,
+      "detail": "数量: 3"
+    },
+    {
+      "name": "答案包含真实内容",
+      "ok": true,
+      "detail": "答案包含关键词"
+    },
+    {
+      "name": "答案非空 fallback",
+      "ok": true,
+      "detail": "非空兜底"
+    },
+    {
+      "name": "空问题返回 4xx/2xx",
+      "ok": true,
+      "detail": "实际: 400"
+    },
+    {
+      "name": "无效 JSON 异常处理",
+      "ok": true,
+      "detail": "实际: 400"
+    },
+    {
+      "name": "第二个问题 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "第二个问题答案非空",
+      "ok": true,
+      "detail": "有答案"
+    },
+    {
+      "name": "获取智能体列表 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "返回 agents 数组",
+      "ok": true,
+      "detail": "数量: 4"
+    },
+    {
+      "name": "智能体包含 name",
+      "ok": true,
+      "detail": "值: 文化传承Agent"
+    },
+    {
+      "name": "智能体包含 description",
+      "ok": true,
+      "detail": "值: 处理非遗、历史、民俗、文化背景类问题"
+    },
+    {
+      "name": "推荐系统 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "返回 recommendations",
+      "ok": true,
+      "detail": "数量: 5"
+    },
+    {
+      "name": "热门问题 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "返回 questions 数组",
+      "ok": true,
+      "detail": "数量: 10"
+    },
+    {
+      "name": "图谱搜索 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "返回 results 数组",
+      "ok": true,
+      "detail": "数量: 5"
+    },
+    {
+      "name": "搜索结果包含 name",
+      "ok": true,
+      "detail": "值: 白云山风景名胜区"
+    },
+    {
+      "name": "实体详情 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "实体包含 entity 字段",
+      "ok": true,
+      "detail": "值: 白云山风景名胜区"
+    },
+    {
+      "name": "实体包含 type 字段",
+      "ok": true,
+      "detail": "值: 景点"
+    },
+    {
+      "name": "实体包含 relations",
+      "ok": true,
+      "detail": "数量: 6"
+    },
+    {
+      "name": "图谱可视化 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "返回 nodes 数组",
+      "ok": true,
+      "detail": "数量: 50"
+    },
+    {
+      "name": "返回 links/edges 数组",
+      "ok": true,
+      "detail": "数量: 55"
+    },
+    {
+      "name": "图谱统计 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "返回 total_entities",
+      "ok": true,
+      "detail": "值: 2469"
+    },
+    {
+      "name": "返回 total_relations",
+      "ok": true,
+      "detail": "值: 2468"
+    },
+    {
+      "name": "实体列表 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "分类列表 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "返回 categories 数组",
+      "ok": true,
+      "detail": "数量: 13"
+    },
+    {
+      "name": "实体增强详情 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "实体附近 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "返回 nearby 数组",
+      "ok": true,
+      "detail": "数量: 4"
+    },
+    {
+      "name": "实体上下文 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "AI 搜索 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "AI 搜索返回结果",
+      "ok": true,
+      "detail": "有结果"
+    },
+    {
+      "name": "路线规划 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "返回 success 字段",
+      "ok": true,
+      "detail": "值: True"
+    },
+    {
+      "name": "返回 route_plan",
+      "ok": true,
+      "detail": "有路线方案"
+    },
+    {
+      "name": "地图坐标 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "返回 points 数组",
+      "ok": true,
+      "detail": "数量: 10"
+    },
+    {
+      "name": "坐标点包含 lat",
+      "ok": true,
+      "detail": "值: 23.1867"
+    },
+    {
+      "name": "坐标点包含 lng",
+      "ok": true,
+      "detail": "值: 113.2987"
+    },
+    {
+      "name": "坐标点包含 name",
+      "ok": true,
+      "detail": "值: 白云山风景名胜区"
+    },
+    {
+      "name": "获取鉴权 token",
+      "ok": true,
+      "detail": "token: eyJhbGciOiJIUzI1NiIs..."
+    },
+    {
+      "name": "会话列表 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "返回 sessions 数组",
+      "ok": true,
+      "detail": "数量: 0"
+    },
+    {
+      "name": "收藏列表 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "返回 favorites 数组",
+      "ok": true,
+      "detail": "数量: 0"
+    },
+    {
+      "name": "添加收藏 HTTP 2xx",
+      "ok": true,
+      "detail": "实际: 201"
+    },
+    {
+      "name": "删除收藏 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "统计概览 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "返回统计数据",
+      "ok": true,
+      "detail": "字段数: 4"
+    },
+    {
+      "name": "位置频次 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "3D 地图配置 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "3D 地图实体 HTTP 200",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "返回实体数据",
+      "ok": true,
+      "detail": "有数据"
+    },
+    {
+      "name": "不存在实体 HTTP 状态码合理",
+      "ok": true,
+      "detail": "实际: 404"
+    },
+    {
+      "name": "不存在会话 HTTP 状态码合理",
+      "ok": true,
+      "detail": "实际: 404"
+    },
+    {
+      "name": "不存在路由返回 404 或 SPA fallback",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "不存在实体附近 HTTP 状态码合理",
+      "ok": true,
+      "detail": "实际: 200"
+    },
+    {
+      "name": "空查询搜索 HTTP 状态码合理",
+      "ok": true,
+      "detail": "实际: 400"
+    }
+  ]
+}

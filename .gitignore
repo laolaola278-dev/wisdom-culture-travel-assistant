@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+*.egg-info/
+dist/
+eggs/
+.pytest_cache/
+*.egg
+
+# Environment
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+backend/.model_cache/
+backend/graph_data/vector_index.pkl
+backend/.secret_key
+backend/.jwt_secret_key
+backend/baiyun_culture.db
+*.zip
+
+# Dependencies (vendored, not source)
+.deps/
+.pip_cache/
+.venv/
+
+# Dev tools
+.claude/
+.workbuddy/
+
+# Build output
+frontend/dist/
+
+# Node
+node_modules/
+node_modules/
+frontend/dist/

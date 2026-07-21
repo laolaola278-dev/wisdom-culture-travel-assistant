@@ -1,0 +1,32 @@
+flask>=3.0.0
+flask-cors>=4.0.0
+flasgger>=0.9.7.1
+flask-jwt-extended>=4.6.0
+flask-limiter>=3.8.0
+bleach>=6.1.0
+
+# Data
+databases>=0.9.0
+SQLAlchemy>=2.0.0
+alembic>=1.13.0
+psycopg2-binary>=2.9.9
+pgvector>=0.2.5
+
+pandas>=2.0.0
+openpyxl>=3.1.0
+jieba>=0.42.1
+networkx>=3.0
+requests>=2.31.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+
+# 可选: 安装后启用语义向量搜索 (pip install sentence-transformers)
+# sentence-transformers>=3.0.0
+
+# Phase 3: 缓存 / 异步 / 部署 / 可观测
+redis>=5.0.0
+celery>=5.4.0
+gunicorn>=23.0.0
+prometheus-client>=0.20.0
+python-json-logger>=2.0.7
+sentry-sdk[flask]>=1.45.0

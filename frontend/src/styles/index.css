@@ -1,0 +1,258 @@
+/**
+ * 全局样式入口
+ * 在 main.ts 中 import './styles/index.css' 一次性引入
+ */
+
+@import './variables.css';
+@import './reset.css';
+@import './transitions.css';
+
+/* ════════════════════════════════════════════════════════════
+ * 通用组件类（参考 shadcn/ui 设计语言）
+ * ════════════════════════════════════════════════════════════ */
+
+/* ── 布局容器 ── */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  max-width: var(--content-max-width);
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--content-padding);
+}
+
+/* ── 卡片 Card ── */
+.card {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  transition: border-color var(--duration-fast) var(--ease-default),
+              box-shadow var(--duration-fast) var(--ease-default);
+}
+
+.card-hover:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-elevated {
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── 按钮 Button ── */
+
+/* Primary 主按钮 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  line-height: 1;
+  border-radius: var(--radius-sm);
+  transition: all var(--duration-fast) var(--ease-default);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-primary {
+  background: var(--primary-500);
+  color: var(--text-on-primary);
+}
+.btn-primary:hover {
+  background: var(--primary-600);
+}
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-secondary {
+  background: var(--surface-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+}
+.btn-secondary:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+}
+.btn-secondary:active {
+  transform: scale(0.97);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+}
+.btn-ghost:hover {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+}
+
+.btn-danger {
+  background: var(--error-text);
+  color: #ffffff;
+}
+.btn-danger:hover {
+  filter: brightness(1.1);
+}
+
+.btn-sm {
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+}
+
+.btn-lg {
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-base);
+}
+
+.btn-icon {
+  padding: var(--space-2);
+  width: 32px;
+  height: 32px;
+}
+
+/* ── 输入框 Input ── */
+.input {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  background: var(--surface-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--duration-fast) var(--ease-default),
+              box-shadow var(--duration-fast) var(--ease-default);
+  outline: none;
+}
+
+.input:hover {
+  border-color: var(--border-strong);
+}
+
+.input:focus {
+  border-color: var(--primary-500);
+  box-shadow: var(--shadow-focus);
+}
+
+.input::placeholder {
+  color: var(--text-quaternary);
+}
+
+textarea.input {
+  resize: vertical;
+  min-height: 80px;
+  line-height: var(--leading-relaxed);
+}
+
+/* ── 标签 Badge ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 2px var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  line-height: 1.4;
+  border-radius: var(--radius-xs);
+  background: var(--bg-muted);
+  color: var(--text-secondary);
+}
+
+.badge-primary {
+  background: var(--primary-50);
+  color: var(--primary-700);
+}
+.dark .badge-primary {
+  background: rgba(94, 106, 210, 0.15);
+  color: var(--primary-300);
+}
+
+.badge-success {
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+
+.badge-warning {
+  background: var(--warning-bg);
+  color: var(--warning-text);
+}
+
+.badge-error {
+  background: var(--error-bg);
+  color: var(--error-text);
+}
+
+/* ── 分割线 ── */
+.divider {
+  height: 1px;
+  background: var(--border-subtle);
+  border: none;
+  margin: var(--space-4) 0;
+}
+
+/* ── 空状态 ── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12) var(--space-6);
+  text-align: center;
+  color: var(--text-tertiary);
+}
+
+.empty-state-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--space-4);
+  opacity: 0.5;
+}
+
+.empty-state-title {
+  font-size: var(--text-md);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-1);
+}
+
+.empty-state-desc {
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+}
+
+/* ── 工具类 ── */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+.text-quaternary { color: var(--text-quaternary); }
+
+.bg-canvas { background: var(--bg-canvas); }
+.bg-subtle { background: var(--bg-subtle); }
+.bg-muted { background: var(--bg-muted); }
+.bg-elevated { background: var(--bg-elevated); }
+
+.border-default { border: 1px solid var(--border-default); }
+.border-subtle { border: 1px solid var(--border-subtle); }
+
+.rounded-sm { border-radius: var(--radius-sm); }
+.rounded-md { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-full { border-radius: var(--radius-full); }
+
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }

@@ -1,0 +1,89 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: baiyun-postgres
+    environment:
+      POSTGRES_DB: baiyun_culture
+      POSTGRES_USER: baiyun
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?请在 .env 中设置 DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    # 仅 compose 网络内可达；如需宿主机调试请显式绑定 127.0.0.1
+    expose:
+      - "5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U baiyun -d baiyun_culture"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: baiyun-redis
+    expose:
+      - "6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+  app:
+    build: .
+    container_name: baiyun-culture-qa
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend/graph_data:/app/backend/graph_data
+      - ./智慧文旅与交通建设数据:/app/智慧文旅与交通建设数据
+      - model_cache:/app/backend/.model_cache
+    environment:
+      - SECRET_KEY=${SECRET_KEY:?请在 .env 中设置 SECRET_KEY}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY:?请在 .env 中设置 JWT_SECRET_KEY}
+      - DATABASE_URL=postgresql+psycopg2://baiyun:${DB_PASSWORD}@db:5432/baiyun_culture
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=baiyun_culture
+      - DB_USER=baiyun
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY}
+      - DEEPSEEK_BASE_URL=https://api.deepseek.com/chat/completions
+      - DEEPSEEK_MODEL=deepseek-chat
+      - OLLAMA_ENABLED=${OLLAMA_ENABLED:-false}
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - OLLAMA_MODEL=qwen2.5:7b
+      - ENABLE_HYBRID_SEARCH=true
+      - ENABLE_EVALUATION=false
+      - DATA_SYNC_ENABLED=true
+      - DATA_SYNC_INTERVAL_HOURS=24
+      - EMBEDDING_MODEL=BAAI/bge-small-zh-v1.5
+      - AMAP_KEY=${AMAP_KEY}
+      - CACHE_ENABLED=true
+      - REDIS_HOST=redis
+      - CELERY_ENABLED=false
+      - RATE_LIMIT_ENABLED=true
+      - ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5000
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      ollama:
+        condition: service_started
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama-local
+    profiles:
+      - ollama
+    volumes:
+      - ollama_data:/root/.ollama
+    ports:
+      - "11434:11434"
+
+volumes:
+  postgres_data:
+  redis_data:
+  ollama_data:
+  model_cache:

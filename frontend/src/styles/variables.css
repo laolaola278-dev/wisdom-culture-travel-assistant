@@ -1,0 +1,267 @@
+/**
+ * 世界级 SaaS Design Token
+ * 参考 Linear / Notion / Stripe / Vercel 设计语言
+ * 8px Grid System · 高级灰体系 · 单一主色 · 深色模式
+ */
+
+:root {
+  /* ════════════════════════════════════════════════════════════
+   * 1. 主色（Primary）— 克制的靛蓝，参考 Linear
+   * ════════════════════════════════════════════════════════════ */
+  --primary-50: #eef0ff;
+  --primary-100: #e0e3ff;
+  --primary-200: #c6cbff;
+  --primary-300: #a3a8ff;
+  --primary-400: #7d83fc;
+  --primary-500: #5e6ad2;   /* 主色 */
+  --primary-600: #4f51b8;
+  --primary-700: #42429c;
+  --primary-800: #383a7e;
+  --primary-900: #313466;
+
+  /* ════════════════════════════════════════════════════════════
+   * 2. 高级灰体系（Gray）— 参考 Notion/Vercel
+   * ════════════════════════════════════════════════════════════ */
+  --gray-50:  #fafafa;
+  --gray-100: #f5f5f5;
+  --gray-200: #e5e5e5;
+  --gray-300: #d4d4d4;
+  --gray-400: #a3a3a3;
+  --gray-500: #737373;
+  --gray-600: #525252;
+  --gray-700: #404040;
+  --gray-800: #262626;
+  --gray-900: #171717;
+  --gray-950: #0a0a0a;
+
+  /* ════════════════════════════════════════════════════════════
+   * 3. 语义色（Light Mode 默认）
+   * ════════════════════════════════════════════════════════════ */
+
+  /* 背景 */
+  --bg-canvas: #ffffff;          /* 页面最底层 */
+  --bg-subtle: var(--gray-50);   /* 次级背景 */
+  --bg-muted: var(--gray-100);   /* 卡片内嵌区域 */
+  --bg-elevated: #ffffff;        /* 浮层/Modal */
+  --bg-overlay: rgba(0, 0, 0, 0.4); /* 遮罩 */
+
+  /* 表面 */
+  --surface-primary: #ffffff;
+  --surface-secondary: var(--gray-50);
+  --surface-hover: var(--gray-50);
+  --surface-active: var(--gray-100);
+  --surface-selected: var(--primary-50);
+
+  /* 文字 */
+  --text-primary: var(--gray-900);    /* 标题/正文 */
+  --text-secondary: var(--gray-600);  /* 次要信息 */
+  --text-tertiary: var(--gray-500);   /* 辅助说明 */
+  --text-quaternary: var(--gray-400); /* 占位符/禁用 */
+  --text-on-primary: #ffffff;         /* 主色按钮上的文字 */
+  --text-link: var(--primary-600);
+
+  /* 边框 */
+  --border-subtle: var(--gray-100);   /* 最细分割线 */
+  --border-default: var(--gray-200);  /* 默认边框 */
+  --border-strong: var(--gray-300);   /* 强调边框 */
+  --border-focus: var(--primary-500); /* 聚焦边框 */
+
+  /* 状态色（低饱和度，用于表达状态） */
+  --success-bg: #ecfdf5;
+  --success-text: #047857;
+  --success-border: #a7f3d0;
+
+  --warning-bg: #fffbeb;
+  --warning-text: #b45309;
+  --warning-border: #fde68a;
+
+  --error-bg: #fef2f2;
+  --error-text: #b91c1c;
+  --error-border: #fecaca;
+
+  --info-bg: #eff6ff;
+  --info-text: #1d4ed8;
+  --info-border: #bfdbfe;
+
+  /* ════════════════════════════════════════════════════════════
+   * 4. 3D 地图深色主题（保留专用变量）
+   * ════════════════════════════════════════════════════════════ */
+  --map-bg: #0f1117;
+  --map-panel: rgba(17, 19, 26, 0.85);
+  --map-panel-strong: rgba(17, 19, 26, 0.95);
+  --map-border: rgba(255, 255, 255, 0.08);
+  --map-border-strong: rgba(255, 255, 255, 0.12);
+  --map-text: #e5e7eb;
+  --map-text-muted: #9ca3af;
+  --map-text-dim: #6b7280;
+  --map-accent: #818cf8;
+  --map-accent-bg: rgba(129, 140, 248, 0.15);
+  --map-hover: rgba(255, 255, 255, 0.06);
+
+  /* 路况色 */
+  --traffic-smooth: #10b981;
+  --traffic-slow: #f59e0b;
+  --traffic-congested: #f97316;
+  --traffic-severe: #ef4444;
+
+  /* ════════════════════════════════════════════════════════════
+   * 5. 间距（8px Grid System）
+   * ════════════════════════════════════════════════════════════ */
+  --space-0: 0;
+  --space-1: 4px;   /* 0.5x */
+  --space-2: 8px;   /* 1x - 基准 */
+  --space-3: 12px;  /* 1.5x */
+  --space-4: 16px;  /* 2x */
+  --space-5: 20px;  /* 2.5x */
+  --space-6: 24px;  /* 3x */
+  --space-8: 32px;  /* 4x */
+  --space-10: 40px; /* 5x */
+  --space-12: 48px; /* 6x */
+  --space-16: 64px; /* 8x */
+  --space-20: 80px; /* 10x */
+
+  /* ════════════════════════════════════════════════════════════
+   * 6. 圆角（统一体系）
+   * ════════════════════════════════════════════════════════════ */
+  --radius-xs: 4px;    /* 小标签 */
+  --radius-sm: 6px;    /* 按钮/输入框 */
+  --radius-md: 8px;    /* 卡片 */
+  --radius-lg: 12px;   /* 大卡片/Modal */
+  --radius-xl: 16px;   /* 特殊容器 */
+  --radius-2xl: 20px;  /* 圆形头像 */
+  --radius-full: 9999px; /* 胶囊 */
+
+  /* ════════════════════════════════════════════════════════════
+   * 7. 阴影（柔和多层）
+   * ════════════════════════════════════════════════════════════ */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-focus: 0 0 0 3px rgba(94, 106, 210, 0.15);
+
+  /* ════════════════════════════════════════════════════════════
+   * 8. 字体
+   * ════════════════════════════════════════════════════════════ */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+
+  /* 字号（参考 Linear 字阶） */
+  --text-xs: 11px;    /* 辅助标签 */
+  --text-sm: 13px;    /* 次要正文 */
+  --text-base: 14px;  /* 正文 */
+  --text-md: 15px;    /* 强调正文 */
+  --text-lg: 17px;    /* 小标题 */
+  --text-xl: 20px;    /* H3 */
+  --text-2xl: 24px;   /* H2 */
+  --text-3xl: 30px;   /* H1 */
+  --text-4xl: 36px;   /* Display */
+
+  /* 字重 */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* 行高 */
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+  --leading-loose: 1.8;
+
+  /* 字间距 */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+
+  /* ════════════════════════════════════════════════════════════
+   * 9. 过渡动画
+   * ════════════════════════════════════════════════════════════ */
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 300ms;
+  --duration-slower: 450ms;
+
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ════════════════════════════════════════════════════════════
+   * 10. 布局
+   * ════════════════════════════════════════════════════════════ */
+  --header-height: 56px;
+  --content-max-width: 1280px;
+  --content-padding: var(--space-6);
+
+  /* Z-Index 层级 */
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-header: 300;
+  --z-overlay: 400;
+  --z-modal: 500;
+  --z-toast: 600;
+  --z-tooltip: 700;
+}
+
+/* ════════════════════════════════════════════════════════════
+ * 深色模式（Dark Mode）
+ * ════════════════════════════════════════════════════════════ */
+.dark {
+  /* 背景 */
+  --bg-canvas: #0a0a0a;
+  --bg-subtle: #111111;
+  --bg-muted: #1a1a1a;
+  --bg-elevated: #171717;
+  --bg-overlay: rgba(0, 0, 0, 0.6);
+
+  /* 表面 */
+  --surface-primary: #171717;
+  --surface-secondary: #1f1f1f;
+  --surface-hover: #262626;
+  --surface-active: #2a2a2a;
+  --surface-selected: rgba(94, 106, 210, 0.15);
+
+  /* 文字 */
+  --text-primary: #fafafa;
+  --text-secondary: #a3a3a3;
+  --text-tertiary: #737373;
+  --text-quaternary: #525252;
+  --text-on-primary: #ffffff;
+  --text-link: var(--primary-400);
+
+  /* 边框 */
+  --border-subtle: #1f1f1f;
+  --border-default: #2a2a2a;
+  --border-strong: #404040;
+  --border-focus: var(--primary-500);
+
+  /* 状态色（深色模式调整） */
+  --success-bg: rgba(16, 185, 129, 0.1);
+  --success-text: #6ee7b7;
+  --success-border: rgba(16, 185, 129, 0.3);
+
+  --warning-bg: rgba(245, 158, 11, 0.1);
+  --warning-text: #fcd34d;
+  --warning-border: rgba(245, 158, 11, 0.3);
+
+  --error-bg: rgba(239, 68, 68, 0.1);
+  --error-text: #fca5a5;
+  --error-border: rgba(239, 68, 68, 0.3);
+
+  --info-bg: rgba(59, 130, 246, 0.1);
+  --info-text: #93c5fd;
+  --info-border: rgba(59, 130, 246, 0.3);
+
+  /* 阴影（深色模式更柔和） */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  --shadow-focus: 0 0 0 3px rgba(94, 106, 210, 0.25);
+}

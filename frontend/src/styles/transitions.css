@@ -1,0 +1,236 @@
+/**
+ * 动画与过渡系统
+ * 参考 Framer Motion 的 spring 缓动
+ */
+
+/* ── 关键帧 ── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* ── 动画类 ── */
+.animate-fade-in { animation: fadeIn var(--duration-slow) var(--ease-out); }
+.animate-fade-in-up { animation: fadeInUp var(--duration-slow) var(--ease-out); }
+.animate-fade-in-down { animation: fadeInDown var(--duration-slow) var(--ease-out); }
+.animate-scale-in { animation: scaleIn var(--duration-base) var(--ease-spring); }
+.animate-slide-in-right { animation: slideInRight var(--duration-slow) var(--ease-out); }
+.animate-slide-in-left { animation: slideInLeft var(--duration-slow) var(--ease-out); }
+
+/* ── Vue Transition 组件配套 ── */
+
+/* Modal/Drawer 遮罩 */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity var(--duration-base) var(--ease-default);
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+/* Modal 弹出 */
+.modal-enter-active {
+  transition: opacity var(--duration-base) var(--ease-default);
+}
+.modal-enter-active .modal-content {
+  transition: transform var(--duration-slow) var(--ease-spring),
+              opacity var(--duration-base) var(--ease-out);
+}
+.modal-leave-active {
+  transition: opacity var(--duration-base) var(--ease-default);
+}
+.modal-leave-active .modal-content {
+  transition: transform var(--duration-base) var(--ease-in),
+              opacity var(--duration-fast) var(--ease-in);
+}
+.modal-enter-from, .modal-leave-to {
+  opacity: 0;
+}
+.modal-enter-from .modal-content {
+  opacity: 0;
+  transform: scale(0.95) translateY(-8px);
+}
+.modal-leave-to .modal-content {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* Drawer 滑入 */
+.drawer-right-enter-active, .drawer-right-leave-active {
+  transition: transform var(--duration-slow) var(--ease-default);
+}
+.drawer-right-enter-from, .drawer-right-leave-to {
+  transform: translateX(100%);
+}
+
+.drawer-left-enter-active, .drawer-left-leave-active {
+  transition: transform var(--duration-slow) var(--ease-default);
+}
+.drawer-left-enter-from, .drawer-left-leave-to {
+  transform: translateX(-100%);
+}
+
+/* 顶部下滑 */
+.slide-down-enter-active {
+  transition: all var(--duration-slow) var(--ease-spring);
+}
+.slide-down-leave-active {
+  transition: all var(--duration-base) var(--ease-in);
+}
+.slide-down-enter-from,
+.slide-down-leave-to {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+/* 底部上滑 */
+.slide-up-enter-active {
+  transition: all var(--duration-slow) var(--ease-spring);
+}
+.slide-up-leave-active {
+  transition: all var(--duration-base) var(--ease-in);
+}
+.slide-up-enter-from,
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* 右侧滑入 */
+.slide-in-right-enter-active {
+  transition: all var(--duration-slow) var(--ease-spring);
+}
+.slide-in-right-leave-active {
+  transition: all var(--duration-base) var(--ease-in);
+}
+.slide-in-right-enter-from,
+.slide-in-right-leave-to {
+  opacity: 0;
+  transform: translateX(16px);
+}
+
+/* 左侧滑入 */
+.slide-in-left-enter-active {
+  transition: all var(--duration-slow) var(--ease-spring);
+}
+.slide-in-left-leave-active {
+  transition: all var(--duration-base) var(--ease-in);
+}
+.slide-in-left-enter-from,
+.slide-in-left-leave-to {
+  opacity: 0;
+  transform: translateX(-16px);
+}
+
+/* Toast 滑入 */
+.toast-enter-active {
+  transition: all var(--duration-slow) var(--ease-spring);
+}
+.toast-leave-active {
+  transition: all var(--duration-base) var(--ease-in);
+}
+.toast-enter-from {
+  opacity: 0;
+  transform: translateY(-12px) scale(0.95);
+}
+.toast-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
+}
+.toast-move {
+  transition: transform var(--duration-base) var(--ease-default);
+}
+
+/* ── Loading 旋转 ── */
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-default);
+  border-top-color: var(--primary-500);
+  border-radius: var(--radius-full);
+  animation: spin 0.6s linear infinite;
+}
+
+.loading-spinner-lg {
+  width: 32px;
+  height: 32px;
+  border-width: 3px;
+}
+
+/* ── Skeleton 骨架屏 ── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-muted) 0%,
+    var(--border-subtle) 50%,
+    var(--bg-muted) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-text {
+  height: 14px;
+  margin-bottom: var(--space-2);
+}
+.skeleton-text:last-child {
+  width: 60%;
+}
+.skeleton-title {
+  height: 20px;
+  width: 40%;
+  margin-bottom: var(--space-3);
+}
+.skeleton-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+}
+.skeleton-card {
+  height: 120px;
+  border-radius: var(--radius-md);
+}
