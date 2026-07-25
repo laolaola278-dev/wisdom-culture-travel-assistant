@@ -646,3 +646,27 @@ gunicorn -c ../deploy/gunicorn.conf.py "app:create_app()"
 3. 查看后端日志（控制台输出）
 4. 访问 `/api/health` 检查系统状态
 5. 访问 `/api/docs/` 查看 API 文档
+
+---
+
+## License
+
+本项目采用 **MIT 许可证** — 详见 [LICENSE](./LICENSE)。
+
+### 商用说明
+
+- 本项目允许商业使用，但需保留原始版权声明和 MIT 许可证文本
+- 本项目维护者不对商用使用中的任何直接或间接损失承担责任
+- 详见 [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) 中的商用说明章节
+
+### 不可滥用声明
+
+本项目的代码和资源**仅可用于合法、正当的目的**。详见 [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) 中的不可滥用声明章节。
+
+### 免责声明
+
+本软件按"原样"提供，不附带任何明示或暗示的担保。在适用法律允许的最大范围内，作者或版权持有人不对因使用本软件而产生的任何索赔、损害或其他责任负责。
+
+### 贡献者
+
+如果你想参与贡献，请阅读 [CONTRIBUTING.md](./CONTRIBUTING.md) 和 [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)。
